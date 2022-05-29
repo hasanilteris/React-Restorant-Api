@@ -1,23 +1,15 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import Nav from './Nav';
+import Restaurant from './Restaurant';
 import './App.css';
 
 function App() {
+  const [restaurants, setRestaurants] = useState([]);
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="restaurants">
+      <Nav restaurants={restaurants} setRestaurants={setRestaurants} />
+      {restaurants.map(rt => <Restaurant key={rt.id} restaurant={rt} />)}
     </div>
   );
 }
